@@ -1,13 +1,21 @@
 // Import express in to our application
 const express = require("express");
 
+
+const Database = require("better-sqlite3");
+
+const {} = require("./blog.controller.js");
+
 // This is how you import stuff from other files. "./" means that we are looking for something inside the same folder as this file (index.js)
 let { blogPost } = require("./data.js");
+
+const db = new Database("post-databas.db");
 
 // Creates the server by invoking the express function and assigning it to the app
 const app = express();
 
 app.use(express.json());
+
 
 // Endpoint for getting all the blog post
 app.get("/blog-posts", (req, res) => {
